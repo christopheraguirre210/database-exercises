@@ -7,5 +7,7 @@ name VARCHAR(50) NOT NULL,
 release_date INT NOT NULL,
 sales FLOAT NOT NULL,
 genre VARCHAR(50) NOT NULL,
-PRIMARY KEY(id)
+PRIMARY KEY(id),
 );
+
+ALTER TABLE albums ADD UNIQUE(artist,name);
