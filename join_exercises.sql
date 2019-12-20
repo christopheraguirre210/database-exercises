@@ -15,8 +15,24 @@ WHERE employees.dept_manager.to_date = '9999-01-01'
   AND employees.employees.gender = 'F' ORDER BY dept_name;
 
 SELECT t.title, COUNT(title) FROM titles t JOIN dept_emp de ON de.emp_no = t.emp_no
-WHERE t.to_date > CURDATE()
+WHERE t.to_date = '9999-01-01'
 AND dept_no = 'd009'
-AND de.to_date > CURDATE()
+AND de.to_date = '9999-01-01'
 GROUP BY t.title;
+
+SELECT employees.departments.dept_name AS 'Department Name', CONCAT(employees.employees.first_name, ' ', employees.employees.last_name) AS 'Name', employees.salaries.salary AS 'Salary'
+FROM departments
+         JOIN dept_manager on departments.dept_no = dept_manager.dept_no
+         JOIN employees on dept_manager.emp_no = employees.emp_no
+         JOIN salaries on dept_manager.emp_no = salaries.emp_no
+WHERE employees.dept_manager.to_date = '9999-01-01'
+AND employees.salaries.to_date = '9999-01-01'
+ORDER BY dept_name;
+
+
+
+
+
+
+
 
